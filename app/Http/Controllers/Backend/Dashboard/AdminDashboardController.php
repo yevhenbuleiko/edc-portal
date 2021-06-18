@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Http\Controllers\Backend\Dashboard;
+
+use App\Http\Controllers\BasicController;
+use Illuminate\Http\Request;
+use Inertia\Inertia;
+
+class AdminDashboardController extends BasicController
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(Request $request)
+    {
+        parent::__construct($request);
+    }
+    
+    /**
+     * Handle the incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function __invoke($fnd, Request $request)
+    {
+        return Inertia::render('Backend/Dashboard/Dashboard');
+    }
+}
