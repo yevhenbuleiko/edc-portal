@@ -1,13 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\Backend\User;
+namespace App\Http\Controllers\Backend\User\User;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BasicController;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
-class AdminUserController extends Controller
+class AdminUserController extends BasicController
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(Request $request)
+    {
+        parent::__construct($request);
+
+        $this->authorizeResource(User::class);
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +28,10 @@ class AdminUserController extends Controller
      */
     public function index($fnd)
     {
-        //
+        $users = $this->fnd->users;
+        return Inertia::render('Backend/User/User/Index', [
+            'users' => $users,
+        ]);
     }
 
     /**
@@ -25,7 +41,7 @@ class AdminUserController extends Controller
      */
     public function create($fnd)
     {
-        //
+        return Inertia::render('Backend/User/User/Create');
     }
 
     /**
@@ -45,9 +61,11 @@ class AdminUserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show($fnd User $user)
+    public function show($fnd, User $user)
     {
-        //
+        return Inertia::render('Backend/User/User/Show', [
+            'user' => $user, 
+        ]);
     }
 
     /**
@@ -58,7 +76,9 @@ class AdminUserController extends Controller
      */
     public function edit($fnd, User $user)
     {
-        //
+        return Inertia::render('Backend/User/User/Edit', [
+            'user' => $user, 
+        ]);
     }
 
     /**
@@ -70,7 +90,13 @@ class AdminUserController extends Controller
      */
     public function update(Request $request, $fnd, User $user)
     {
-        //
+        $request->validate([
+            'name'  => 'required',
+            'email' => 'required|email',
+        ]);
+        $user->update($request->only('name', 'email'));
+
+        return back();
     }
 
     /**

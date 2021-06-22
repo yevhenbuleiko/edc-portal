@@ -7,7 +7,7 @@
 
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Users List
+                Permission List
             </h2>
         </template>
 

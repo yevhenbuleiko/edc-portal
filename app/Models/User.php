@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Traits\HasCan;
 
 use App\Models\Foundation\Foundation;
 
@@ -19,6 +21,8 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use SoftDeletes;
+    use HasCan;
 
     /**
      * The attributes that are mass assignable.
@@ -59,6 +63,7 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+        'can',
     ];
 
     /* - Relationships - */
@@ -70,4 +75,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Foundation::class, 'foundations_users', 'user_id', 'foundation_id');
     }
+
+    /* - Utils - */
+
+    /**
+     * If User Has Role
+     */
+    public function hasRole($role) {
+        return true;
+    }
+
 }

@@ -36,7 +36,10 @@
 
                                     <template #content>
                                         <div class="w-28">
-                                            <jet-dropdown-link :href="route('admin.users.index', $page.props.objFnd.alias)" :active="route().current('admin.users.*')">
+                                            <jet-dropdown-link 
+                                            :href="route('admin.users.index', $page.props.objFnd.alias)" 
+                                            :active="route().current('admin.users.*')" 
+                                            v-if="$page.props.permission.users.viewAny">
                                                 Users
                                             </jet-dropdown-link>
                                         </div>

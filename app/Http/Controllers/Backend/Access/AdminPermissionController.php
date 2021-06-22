@@ -2,18 +2,28 @@
 
 namespace App\Http\Controllers\Backend\Access;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BasicController;
 use App\Models\Access\Permission;
 use Illuminate\Http\Request;
 
-class AdminPermissionController extends Controller
+class AdminPermissionController extends BasicController
 {
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(Request $request)
+    {
+        parent::__construct($request);
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($fnd)
     {
         //
     }
@@ -23,7 +33,7 @@ class AdminPermissionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($fnd)
     {
         //
     }
@@ -34,7 +44,7 @@ class AdminPermissionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $fnd)
     {
         //
     }
@@ -45,7 +55,7 @@ class AdminPermissionController extends Controller
      * @param  \App\Models\Access\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function show(Permission $permission)
+    public function show($fnd, Permission $permission)
     {
         //
     }
@@ -56,7 +66,7 @@ class AdminPermissionController extends Controller
      * @param  \App\Models\Access\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function edit(Permission $permission)
+    public function edit($fnd, Permission $permission)
     {
         //
     }
@@ -68,7 +78,7 @@ class AdminPermissionController extends Controller
      * @param  \App\Models\Access\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Permission $permission)
+    public function update(Request $request, $fnd, Permission $permission)
     {
         //
     }
@@ -79,7 +89,7 @@ class AdminPermissionController extends Controller
      * @param  \App\Models\Access\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Permission $permission)
+    public function destroy($fnd, Permission $permission)
     {
         //
     }

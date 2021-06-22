@@ -86,7 +86,7 @@
 
         methods: {
             submit() {
-                this.form.post(this.route('register', 'knu'), {
+                this.form.post(this.route('register', this.$attrs.objFnd.alias), {
                     onFinish: () => this.form.reset('password', 'password_confirmation'),
                 })
             }

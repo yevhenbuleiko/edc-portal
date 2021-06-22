@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Inertia\Middleware;
 
 use App\Models\Foundation\Foundation;
-//use App\Models\User;
+use App\Models\User;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -49,12 +49,23 @@ class HandleInertiaRequests extends Middleware
         // -------------------------------------------
 
         $fnd_alias = $request->fnd;
-        $fnd = Foundation::select('alias')->where('alias', $fnd_alias)->firstOrFail();
-    
-        $request['foundation'] = $fnd;
+        $fnd = Foundation::where('alias', $fnd_alias)->firstOrFail();
+        $request['currentFnd'] = $fnd;
 
         return array_merge(parent::share($request), [
             'objFnd' => $fnd,
+            // lazy get user permissions
+            'permission' => [
+                'users' => function() use ($request) {
+                    $usr = $request->user();
+                    if($usr) {
+                        return [
+                            'viewAny' => $usr->can('viewAny', User::class),
+                            'create' => $usr->can('create', User::class),
+                        ];
+                    }
+                }
+            ],
         ]);
     }
 }

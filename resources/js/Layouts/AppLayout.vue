@@ -28,7 +28,13 @@
                 <div class="max-w-screen-2xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <div class="grid grid-cols-12 gap-4">
                         <div class="col-span-2">
-                            <slot name="leftcnt"></slot>
+                            <div class="py-12">
+                                <div class="mx-auto sm:px-6 lg:px-8">
+                                    <div class="bg-white overflow-hidden shadow-md sm:rounded-lg">
+                                        <slot name="leftcnt"></slot>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-span-8">
                             <div class="py-12">

@@ -9,7 +9,9 @@ use App\Http\Controllers\Frontend\Home\HomeController;
 /* --- Backend --- */
 use App\Http\Controllers\Backend\Dashboard\AdminDashboardController;
 // User
-use App\Http\Controllers\Backend\User\AdminUserController;
+use App\Http\Controllers\Backend\User\User\AdminUserController;
+// Access
+use App\Http\Controllers\Backend\Access\AdminPermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +40,7 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('/{fnd}/admin')->group(f
     Route::get('/dashboard', AdminDashboardController::class)->name('admin.dashboard');
 
     // -- Access
-    
+    Route::resource('access/permissions', AdminPermissionController::class, ['as' => 'admin'])->except(['create','store','destroy']);
     // -- User
     // User
     Route::resource('users', AdminUserController::class, ['as' => 'admin']);
