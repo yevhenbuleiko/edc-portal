@@ -62,7 +62,7 @@
                                                     </div>
                                                     <div class="ml-4">
                                                         <div class="text-sm font-medium text-gray-900 truncate">
-                                                            {{ user.name }}
+                                                            {{ user.last_name }}
                                                         </div>
                                                         <div class="text-sm text-gray-500">
                                                             {{ user.email }}
@@ -71,7 +71,7 @@
                                                 </div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap">
-                                                <div class="text-sm text-gray-900 max-w-md truncate">Regional Paradigm Technician</div>
+                                                <div class="text-sm text-gray-900 max-w-md truncate">{{ user.about }}</div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                 <inertia-link 

@@ -23,10 +23,6 @@ class CreateCurrenciesTable extends Migration
             $table->string('img')->nullable();
             $table->string('ikey')->default('currencies');
 
-            $table->integer('prepared')->default(100);
-            $table->integer('mutable')->default(0);
-            $table->integer('deletable')->default(0);
-
             $table->boolean('blocked')->default(0);
             $table->boolean('valid')->default(1);
             $table->boolean('published')->default(1);

@@ -28,7 +28,7 @@ class AdminUserController extends BasicController
      */
     public function index($fnd)
     {
-        $users = $this->fnd->users;
+        $users = $this->fnd->users()->infobylang()->get();
         return Inertia::render('Backend/User/User/Index', [
             'users' => $users,
         ]);

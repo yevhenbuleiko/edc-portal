@@ -24,11 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Gate::before(function($user, $ability) {
-        //     if ($user->hasRole('moderator')) {
-        //         return true;
-        //         //return false;
-        //     }
-        // });
+        Gate::before(function($user, $ability) {
+            if ($user->hasRole('moderator')) {
+                return true;
+            }
+        });
     }
 }

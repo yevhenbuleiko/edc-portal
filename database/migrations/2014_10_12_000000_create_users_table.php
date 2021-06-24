@@ -23,12 +23,8 @@ class CreateUsersTable extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
 
-            $table->integer('prepared')->default(100);
-            $table->integer('mutable')->default(100);
-            $table->integer('deletable')->default(100);
             $table->string('ikey')->default('users');
-
-            $table->integer('status')->default('0'); // active - 100, not active - 0
+            $table->integer('status')->default(0);
 
             $table->string('logo')->nullable();
             $table->boolean('show_logo')->default(1);

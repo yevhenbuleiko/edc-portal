@@ -16,10 +16,6 @@ class CreateFoundationsTable extends Migration
         Schema::create('foundations', function (Blueprint $table) {
             $table->id();
         
-            $table->integer('prepared')->default(100);
-            $table->integer('mutable')->default(100);
-            $table->integer('deletable')->default(100);
-
             $table->string('alias', 128)->nullable()->unique();
             $table->string('ikey')->default('foundations');
             $table->string('logo')->nullable();
@@ -30,6 +26,8 @@ class CreateFoundationsTable extends Migration
             $table->boolean('blocked')->default(false);
             $table->boolean('published')->default(false);
             $table->boolean('chatable')->default(1);
+
+            $table->integer('status')->default(0);
 
             $table->foreignId('created_id')->nullable()->constrained('users');
             $table->foreignId('modified_id')->nullable()->constrained('users');
