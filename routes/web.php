@@ -40,14 +40,16 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('/{fnd}/admin')->group(f
     Route::get('/dashboard', AdminDashboardController::class)->name('admin.dashboard');
 
     // -- Access
+    // Permission
     Route::resource('access/permissions', AdminPermissionController::class, ['as' => 'admin'])->except(['create','store','destroy']);
+    // Role
+    // Access
     // -- User
     // User
     Route::resource('users', AdminUserController::class, ['as' => 'admin']);
     // Unions
     // ---
 });
-
 
 
 // Route::get('/', function () {

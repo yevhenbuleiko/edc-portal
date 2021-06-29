@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\Access;
 use App\Http\Controllers\BasicController;
 use App\Models\Access\Permission;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class AdminPermissionController extends BasicController
 {
@@ -16,6 +17,14 @@ class AdminPermissionController extends BasicController
     public function __construct(Request $request)
     {
         parent::__construct($request);
+
+        /* 
+        // Lazily
+        Inertia::share('user', fn (Request $request) => $request->user()
+            ? $request->user()->only('id', 'name', 'email')
+            : null
+        );
+        */
     }
 
     /**

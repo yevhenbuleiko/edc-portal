@@ -26,7 +26,7 @@ class BasicController extends Controller
         //$start = microtime(true);
         $this->middleware(function ($request, $next) {
 
-            $this->fnd = $request['currentFnd'];
+            $this->fnd  = $request['currentFnd'];
             $this->usr  = $request->user();
 
             return $next($request);

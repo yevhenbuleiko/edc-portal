@@ -11,6 +11,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\HasCan;
+use App\Traits\ItemInfo;
 use App;
 
 use App\Models\Foundation\Foundation;
@@ -24,6 +25,7 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
     use SoftDeletes;
     use HasCan;
+    use ItemInfo;
 
     protected $modelKey = 'users';
     protected $withChatRoom = false;
@@ -80,31 +82,6 @@ class User extends Authenticatable
     ];
 
     /* - Scope - */
-
-    /**
-    * Scope Left Join With Info By Current Lang;
-    */
-    public function scopeInfobylang($query) {
-        // return $query->leftJoin($this->modelKey.'_info', function ($join) {
-        //     $join->on($this->modelKey.'.id', '=', $this->modelKey.'_info.'.substr($this->modelKey, 0, -1).'_id')
-        //         ->where($this->modelKey.'_info.langkey', App::getLocale());
-        // });
-
-        return $query->select(self::$infoByLangKeys)->leftJoin('users_info', function ($join) {
-            $join->on('users.id', '=', 'users_info.'.'user_id')
-                ->where('users_info.langkey', App::getLocale());
-        });
-    }
-
-    /* - Relationships - */
-
-     /**
-    *  Get Info
-    */
-    public function info()
-    {
-        return $this->hasMany(get_class($this).'Info', $this->modelKey.'_id');
-    }
 
     /**
      * Foundations
