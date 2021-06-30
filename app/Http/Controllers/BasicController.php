@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
+use Lang;
+
+use App\Models\Foundation\Foundation;
+use App\Models\User;
 
 class BasicController extends Controller
 {
@@ -23,14 +28,21 @@ class BasicController extends Controller
      */
     public function __construct(Request $request)
     {
-        //$start = microtime(true);
+        $fnd_alias = $request->fnd;
+        $this->fnd = Foundation::where('alias', $fnd_alias)->firstOrFail();
+        $request['currentFnd'] = $this->fnd;
+
+        // dd($fnd);
+
+        // $start = microtime(true);
         $this->middleware(function ($request, $next) {
 
-            $this->fnd  = $request['currentFnd'];
+            //$this->fnd  = $request['currentFnd'];
             $this->usr  = $request->user();
 
             return $next($request);
         });
-        //echo 'Время выполнения скрипта: '.round(microtime(true) - $start, 8).' сек.';
+        // echo 'Время выполнения скрипта: '.round(microtime(true) - $start, 8).' сек.';
     }
+
 }

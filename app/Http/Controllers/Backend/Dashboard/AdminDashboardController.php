@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Dashboard;
 
 use App\Http\Controllers\BasicController;
+use App\Http\Controllers\Backend\Dashboard\AdminUtilsDashboard as Utils;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -13,9 +14,17 @@ class AdminDashboardController extends BasicController
      *
      * @return void
      */
-    public function __construct(Request $request)
+    public function __construct(Request $request, Utils $utils)
     {
         parent::__construct($request);
+        $this->utils = $utils;
+
+        $this->middleware(function ($request, $next) {
+    
+            Inertia::share('dp', fn () => $this->utils->data );
+
+            return $next($request);
+        });
     }
     
     /**

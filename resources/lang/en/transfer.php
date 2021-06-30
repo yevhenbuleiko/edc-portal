@@ -77,7 +77,7 @@ return [
 	'edit-type-title'                   => 'Edit type',
 	'type-title'                        => 'Type',
 
-	// Premission
+	// Access
 	'access-title'                      => 'Access',
 	// Role
 	'roles-title'                       => 'Roles',

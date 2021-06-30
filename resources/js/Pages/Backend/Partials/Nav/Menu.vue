@@ -13,7 +13,7 @@
                                 <jet-nav-link :href="route('admin.dashboard', $page.props.objFnd.alias)" :active="route().current('admin.dashboard')">
                                     <span class="inline-flex rounded-md">
                                         <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 hover:text-gray-100 focus:outline-none transition">
-                                            Dashboard
+                                            {{ $page.props.dp.titles.dashboard }}
                                         </button>
                                     </span>
                                 </jet-nav-link>
@@ -28,7 +28,7 @@
                                         <div class="text-center">
                                             <span class="inline-flex rounded-md">
                                                 <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 hover:text-gray-100 focus:outline-none transition">
-                                                    Users
+                                                    {{ $page.props.dp.titles.users }}
                                                 </button>
                                             </span>
                                         </div>
@@ -40,7 +40,7 @@
                                             :href="route('admin.users.index', $page.props.objFnd.alias)" 
                                             :active="route().current('admin.users.*')" 
                                             v-if="$page.props.permission.users.viewAny">
-                                                Users
+                                                {{ $page.props.dp.titles.users }}
                                             </jet-dropdown-link>
                                         </div>
                                     </template>
@@ -56,7 +56,7 @@
                                         <div class="text-center">
                                             <span class="inline-flex rounded-md">
                                                 <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 hover:text-gray-100 focus:outline-none transition">
-                                                    Access
+                                                    {{ $page.props.dp.titles.access }}
                                                 </button>
                                             </span>
                                         </div>
@@ -65,17 +65,17 @@
                                     <template #content>
                                         <div class="w-28">
                                             <jet-dropdown-link href="#">
-                                                Access
+                                                {{ $page.props.dp.titles.access }}
                                             </jet-dropdown-link>
                                         </div>
                                         <div class="w-28">
                                             <jet-dropdown-link href="#">
-                                                Roles
+                                                {{ $page.props.dp.titles.roles }}
                                             </jet-dropdown-link>
                                         </div>
                                         <div class="w-28">
                                             <jet-dropdown-link href="#">
-                                                Permissions
+                                                {{ $page.props.dp.titles.permissions }}
                                             </jet-dropdown-link>
                                         </div>
                                     </template>

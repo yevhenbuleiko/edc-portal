@@ -7,7 +7,7 @@
 
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Users List
+                {{ $page.props.dp.titles.users }}
                 <inertia-link :href="route('admin.users.create', [$page.props.objFnd.alias])" 
                     class="float-right"
                     v-if="$page.props.permission.users.create">
@@ -19,14 +19,12 @@
         <template #breadcrumbs>
             <ol class="flex text-gray-700 bg-gray-100 rounded py-2 px-2">
                 <li class="px-2">
-                    <a href="#" class="hover:underline">Home</a>
-                </li>
-                <li class="text-gray-500 select-none">&rsaquo;</li>
-                <li class="px-2">
                     <a href="#" class="hover:underline">Dashboard</a>
                 </li>
                 <li class="text-gray-500 select-none">&rsaquo;</li>
-                <li class="px-2 text-indigo-600">Users</li>
+                <li class="px-2 text-indigo-600">
+                    {{ $page.props.dp.titles.users }}
+                </li>
             </ol>
         </template>
 
@@ -43,10 +41,10 @@
                                     <thead class="bg-gray-50">
                                         <tr>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Name
+                                                {{ $page.props.dp.titles.name }}
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Description
+                                                {{ $page.props.dp.titles.desc }}
                                             </th>
                                             <th scope="col" class="relative px-6 py-3">
                                             

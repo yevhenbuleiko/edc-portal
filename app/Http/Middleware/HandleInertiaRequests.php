@@ -48,12 +48,14 @@ class HandleInertiaRequests extends Middleware
         //dd($fnd->users);
         // -------------------------------------------
 
-        $fnd_alias = $request->fnd;
-        $fnd = Foundation::where('alias', $fnd_alias)->firstOrFail();
-        $request['currentFnd'] = $fnd;
+        // $fnd_alias = $request->fnd;
+        // $fnd = Foundation::where('alias', $fnd_alias)->firstOrFail();
+        // $request['currentFnd'] = $fnd;
 
         return array_merge(parent::share($request), [
-            'objFnd' => $fnd,
+            // 'objFnd' => $fnd,
+
+            'objFnd' => $request['currentFnd']->only(['alias']),
             // lazy get user permissions
             'permission' => [
                 'users' => function() use ($request) {
