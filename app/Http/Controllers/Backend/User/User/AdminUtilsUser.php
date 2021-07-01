@@ -17,6 +17,9 @@ class AdminUtilsUser
     public function __construct()
     {
         $this->data['titles'] = [
+            'login'       => Lang::get('transfer.login-title'),
+            'logout'      => Lang::get('transfer.logout-title'),
+            'register'    => Lang::get('transfer.register-title'),
             'dashboard'   => Lang::get('transfer.dashboard-title'),
             'access'      => Lang::get('transfer.access-title'),
             'roles'       => Lang::get('transfer.roles-title'),

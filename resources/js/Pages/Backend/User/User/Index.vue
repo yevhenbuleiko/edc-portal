@@ -2,7 +2,7 @@
     <app-layout>
 
         <template #menu>
-            <main-menu />
+            <main-menu :fndAlias="$page.props.objFnd.alias"/>
         </template>
 
         <template #header>

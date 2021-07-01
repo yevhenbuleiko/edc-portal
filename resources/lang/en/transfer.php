@@ -67,6 +67,10 @@ return [
     'allows-title'                      => 'Allows',
     'anchor-title'                      => 'Anchor',
 
+    'login-title'                       => 'Login',
+    'logout-title'                      => 'Loguot',
+    'register-title'                    => 'Register',
+
 	// Filter
 	'filter-title'                      => 'Filter',
 	'clear-title'                       => 'clear',

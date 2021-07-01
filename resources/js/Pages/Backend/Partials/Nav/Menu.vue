@@ -89,17 +89,17 @@
                         <!-- Authentication -->
                         <form v-if="$page.props.user" @submit.prevent="logout">
                             <jet-dropdown-link as="button">
-                                Log Out
+                                {{ $page.props.dp.titles.logout }}
                             </jet-dropdown-link>
                         </form>
 
                         <template v-else>
                             <inertia-link :href="route('login', $page.props.objFnd.alias)" class="text-sm text-gray-700 underline">
-                                Log in
+                                {{ $page.props.dp.titles.login }}
                             </inertia-link>
 
                             <inertia-link :href="route('register', $page.props.objFnd.alias)" class="ml-4 text-sm text-gray-700 underline">
-                                Register
+                                {{ $page.props.dp.titles.register }}
                             </inertia-link>
                         </template>
                     </div>
@@ -127,15 +127,17 @@
             JetNavLink,
             JetResponsiveNavLink,
         },
+        props: {
+            fndAlias: String
+        },
         data() {
             return {
                 showingNavigationDropdown: false,
             }
         },
-
         methods: {
             logout() {
-                this.$inertia.post(route('logout', 'knu'));
+                this.$inertia.post(route('logout', this.fndAlias));
             },
         }
     }
