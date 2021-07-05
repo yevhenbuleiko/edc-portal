@@ -32,6 +32,6 @@ class Language extends Model
      */
     public function foundations()
     {
-        return $this->belongsToMany(Foundation::class, 'foundations_languages', 'language_id', 'foundation_id');
+        return $this->belongsToMany(Foundation::class, 'foundations_languages', 'langkey', 'foundation_id');
     }
 }

@@ -13,7 +13,17 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\MakeFoundation::class,
+        Commands\MakeItems::class,
+        Commands\MakePermissions::class,
+        Commands\MakeRoles::class,
+        Commands\MakeAccess::class,
+        Commands\MakeCurrencies::class,
+        Commands\MakeLangs::class,
+        Commands\MakeSettings::class,
+        Commands\MakeDecors::class,
+        Commands\MakeModerator::class,
+        Commands\CreateFoundation::class,
     ];
 
     /**

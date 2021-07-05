@@ -177,6 +177,12 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
 
+        // ... Own ...
+        Intervention\Image\ImageServiceProvider::class,
+        // ... Helpers ...
+        App\Providers\HelpersServiceProvider::class,
+        App\Providers\DataConvertorsServiceProvider::class,
+
     ],
 
     /*
@@ -229,6 +235,12 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        // .. Own
+        'Image' => Intervention\Image\Facades\Image::class,
+        // Helpers
+        'Helpers'        => App\Helpers\Facades\HelpersFacade::class,
+        'Dataconvertors' => App\Helpers\Facades\DataConvertorsFacade::class,
 
     ],
 

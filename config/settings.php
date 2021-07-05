@@ -2,7 +2,7 @@
 
 return [
 	// Global Moderator Email
-	'gme' => 'moderator@mail.com',
+	'gme' => 'mdr@mail.com',
 
 	// Items
 	// kind, type, union, item	

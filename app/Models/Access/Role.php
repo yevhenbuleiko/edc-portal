@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\HasCan;
 use App\Traits\ItemInfo;
+use App\Traits\Chatroom;
 use App;
 
 class Role extends Model
@@ -18,6 +19,7 @@ class Role extends Model
     use SoftDeletes;
     use HasCan;
     use ItemInfo;
+    use Chatroom;
 
     protected $modelKey = 'roles';
     protected $withChatRoom = false;
@@ -53,4 +55,13 @@ class Role extends Model
     {
       return $this->belongsToMany(Permission::class, 'roles_permissions', 'role_id', 'permission_id');
     }
+
+    /**
+    *  Get Users.
+    */
+    public function users()
+    {
+        return $this->belongsToMany('App\Models\User', 'users_roles', 'role_id', 'user_id')->withPivot('pv_valid', 'pv_published', 'pv_temp', 'pv_added_at', 'pv_from_date', 'pv_to_date', 'pv_context');
+    }
+
 }

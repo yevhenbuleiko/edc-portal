@@ -12,6 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\HasCan;
 use App\Traits\ItemInfo;
+use App\Traits\Chatroom;
 use App;
 
 use App\Models\Foundation\Foundation;
@@ -26,6 +27,7 @@ class User extends Authenticatable
     use SoftDeletes;
     use HasCan;
     use ItemInfo;
+    use Chatroom;
 
     protected $modelKey = 'users';
     protected $withChatRoom = false;
@@ -83,6 +85,8 @@ class User extends Authenticatable
 
     /* - Scope - */
 
+    /* - Relations - */
+
     /**
      * Foundations
      */
@@ -90,6 +94,21 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Foundation::class, 'foundations_users', 'user_id', 'foundation_id');
     }
+
+    /**
+    *  Get Permissions
+    */
+    public function perms()
+    {
+      return $this->belongsToMany('App\Models\Access\Permission', 'users_permissions', 'user_id', 'permission_id');
+    }
+
+    /* Helpers */
+    // If User Is Global Moderator
+    public function globalModerator() {
+        return ($this->email === Config::get('settings.gme')) ? true : false;
+    }
+
 
     /* - Utils - */
 
