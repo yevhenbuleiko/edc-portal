@@ -182,6 +182,7 @@ return [
         // ... Helpers ...
         App\Providers\HelpersServiceProvider::class,
         App\Providers\DataConvertorsServiceProvider::class,
+        App\Providers\CommandsServiceProvider::class,
 
     ],
 
@@ -241,6 +242,7 @@ return [
         // Helpers
         'Helpers'        => App\Helpers\Facades\HelpersFacade::class,
         'Dataconvertors' => App\Helpers\Facades\DataConvertorsFacade::class,
+        'Commandhelpers'       => App\Helpers\Facades\CommandsFacade::class,
 
     ],
 

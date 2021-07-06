@@ -61,13 +61,13 @@ return [
 		['bind_unions',           'union',   [5, 50],  [1,4]],
 		//['change_union_kind',     'union',   [5, 60],  [1,4]],
 
-		['access_users',          'usr',     [6, 0],   [1,4]],
-            ['show_admin',            'usr',     [6, 10],  [1]],
-            ['crud_admin',            'usr',     [6, 20],  [1]],
-		['show_users',            'usr',     [6, 30],  [1,4]],
-		['crud_users',            'usr',     [6, 40],  [1,4]],
-            ['bind_users',            'usr',     [6, 50],  [1,4]],
-		['make_global_users',     'usr',     [6, 60],  [1,4]],
+		['access_users',          'user',     [6, 0],   [1,4]],
+            ['show_admin',            'user',     [6, 10],  [1]],
+            ['crud_admin',            'user',     [6, 20],  [1]],
+		['show_users',            'user',     [6, 30],  [1,4]],
+		['crud_users',            'user',     [6, 40],  [1,4]],
+            ['bind_users',            'user',     [6, 50],  [1,4]],
+		['make_global_users',     'user',     [6, 60],  [1,4]],
 
 		['access_settings',       'sttg',    [7, 0],   [1]],
 		['change_settings',       'sttg',    [7, 10],  [1]],
@@ -579,8 +579,8 @@ return [
       ],
 
       'decors' => [ // name, default value, for
-            ['site_background_color',         'white',       'base'   ],
-            ['main_nav_background_color',     'white',       'base'   ],
+            ['site_bg_color',         'white',       'base'   ],
+            ['main_nav_bg_color',     'white',       'base'   ],
       ],
 
 ];

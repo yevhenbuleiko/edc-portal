@@ -38,7 +38,25 @@ class Permission extends Model
         'alias', 'for', 'for_number', 'number', 'valid', 'blocked', 'created_by_id', 'modified_by_id', 'deleted_at', 'foundation_id', 'status'
     ];
 
-    /* Relationships */
+    /* - Scope - */
+
+    /**
+    *  Scope By Group(for)
+    */
+    public function scopeByfnd($query, $fndId)
+    {
+        return $query->where('foundation_id', $fndId);
+    }
+
+    /**
+    *  Scope By Group(for)
+    */
+    public function scopeBy($query, $by=[])
+    {
+        return $query->whereIn('for', $by);
+    }
+
+    /* - Relationships - */
     /**
     * Get Foundation
     */
@@ -53,4 +71,6 @@ class Permission extends Model
     {
       return $this->belongsToMany(Role::class, 'roles_permissions', 'permission_id', 'role_id');
     }
+
+
 }

@@ -13,7 +13,7 @@ use App\Models\User;
 
 use Config;
 use Helpers;
-
+use Commandhelpers;
 
 class MakeLangs extends Command
 {
@@ -64,7 +64,7 @@ class MakeLangs extends Command
                 $moderator_passwd = $this->secret('What is moderator password?');
             }
 
-            $wrongParams = Helpers::validationCommandParametrs(
+            $wrongParams = Commandhelpers::validationCommandParametrs(
                 ['alias'=>$alias, 'langs'=>$langs_list, 'email'=>$moderator_email, 'passwd'=>$moderator_passwd]
             );
             if(!empty($wrongParams)) {

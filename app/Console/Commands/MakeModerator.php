@@ -13,6 +13,7 @@ use App\Models\User;
 
 use Config;
 use Helpers;
+use Commandhelpers;
 
 class MakeModerator extends Command
 {
@@ -64,7 +65,7 @@ class MakeModerator extends Command
                 $moderator_passwd = $this->secret('What is moderator password?');
             }
 
-            $wrongParams = Helpers::validationCommandParametrs(
+            $wrongParams = Commandhelpers::validationCommandParametrs(
                 ['alias'=>$alias, 'email'=>$moderator_email, 'passwd'=>$moderator_passwd]
             );
             if(!empty($wrongParams)) {
@@ -74,7 +75,7 @@ class MakeModerator extends Command
                 return -1;
             }
             if($email !==null && $passwd !== null) {
-                $wrongParams = Helpers::validationCommandParametrs(
+                $wrongParams = Commandhelpers::validationCommandParametrs(
                     ['email'=>$email, 'passwd'=>$passwd]
                 );
                 if(!empty($wrongParams)) {
@@ -146,6 +147,9 @@ class MakeModerator extends Command
             ]);
 
             $newUser->perms()->attach($moderator_role->permissions);
+
+            // $newUser->permissions = $moderator_role->permissions->pluck('alias')->toJson();
+            // $newUser->save();
 
             $bar->advance();
 

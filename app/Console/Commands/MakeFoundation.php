@@ -11,6 +11,7 @@ use App\Models\Foundation\Foundation;
 use App\Models\User;
 
 use Helpers;
+use Commandhelpers;
 
 class MakeFoundation extends Command
 {
@@ -60,7 +61,7 @@ class MakeFoundation extends Command
                 $moderator_passwd = $this->secret('What is moderator password?');
             }
 
-            $wrongParams = Helpers::validationCommandParametrs(
+            $wrongParams = Commandhelpers::validationCommandParametrs(
                 ['alias'=>$alias, 'email'=>$moderator_email, 'passwd'=>$moderator_passwd]
             );
             if(!empty($wrongParams)) {
@@ -84,7 +85,7 @@ class MakeFoundation extends Command
             }
             if(!is_null($parent_alias) && $parent_alias !== '0') {
                 $parent_alias = trim(strval($parent_alias));
-                $wrongParams = Helpers::validationCommandParametrs(['alias'=>$parent_alias]);
+                $wrongParams = Commandhelpers::validationCommandParametrs(['alias'=>$parent_alias]);
                 if(!empty($wrongParams)) {
                     foreach ($wrongParams as $key => $value) {
                         $this->error($value);

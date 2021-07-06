@@ -40,6 +40,8 @@ class Role extends Model
         'alias', 'chatable', 'temp', 'from_date', 'to_date', 'valid', 'blocked', 'created_by_id', 'modified_by_id', 'deleted_at', 'foundation_id', 'status'
     ];
 
+    /* - Scope - */
+
     /* Relationships */
     /**
     * Get Foundation

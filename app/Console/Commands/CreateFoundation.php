@@ -15,6 +15,7 @@ use App\Models\User;
 
 use Config;
 use Helpers;
+use Commandhelpers;
 
 class CreateFoundation extends Command
 {
@@ -61,7 +62,8 @@ class CreateFoundation extends Command
             if ($this->confirm('Parent foundation?')) {
                 $parent_alias = $this->ask('Parent foundation Alias');
 
-                $wrongParams = Helpers::validationCommandParametrs(['alias'=>$parent_alias]);
+                // $wrongParams = Helpers::validationCommandParametrs(['alias'=>$parent_alias]);
+                $wrongParams = Commandhelpers::validationCommandParametrs(['alias'=>$parent_alias]);
                 if(!empty($wrongParams)) {
                     foreach ($wrongParams as $key => $value) {
                         $this->error($value);
@@ -86,7 +88,7 @@ class CreateFoundation extends Command
                 $email  = $this->ask('Moderator email?');
                 $passwd = $this->ask('Moderator email?');
 
-                $wrongParams = Helpers::validationCommandParametrs(['alias'=>$alias, 'email'=>$email, 'passwd'=>$passwd]);
+                $wrongParams = Commandhelpers::validationCommandParametrs(['alias'=>$alias, 'email'=>$email, 'passwd'=>$passwd]);
                 if(!empty($wrongParams)) {
                     foreach ($wrongParams as $key => $value) {
                         $this->error($value);
@@ -105,7 +107,7 @@ class CreateFoundation extends Command
                 $moderator_passwd = $this->secret('What is global moderator password?');
             }
 
-            $wrongParams = Helpers::validationCommandParametrs(
+            $wrongParams = Commandhelpers::validationCommandParametrs(
                 ['alias'=>$alias, 'email'=>$moderator_email, 'passwd'=>$moderator_passwd]
             );
             if(!empty($wrongParams)) {
@@ -174,7 +176,7 @@ class CreateFoundation extends Command
             }
             $this->newLine();
     
-            $wrongParams = Helpers::validationCommandParametrs(
+            $wrongParams = Commandhelpers::validationCommandParametrs(
                 ['alias'=>$alias, 'currencies'=>$tmp_currencies_list, 'langs'=>$tmp_langs_list]
             );
             if(!empty($wrongParams)) {

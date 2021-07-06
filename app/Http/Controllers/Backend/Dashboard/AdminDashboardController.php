@@ -20,7 +20,6 @@ class AdminDashboardController extends BasicController
         $this->utils = $utils;
 
         $this->middleware(function ($request, $next) {
-    
             Inertia::share('dp', fn () => $this->utils->data );
 
             return $next($request);

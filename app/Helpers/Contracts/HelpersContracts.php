@@ -8,6 +8,7 @@ Interface HelpersContracts {
 
 	// Common
 	public static function itemAliasByInfo($fnd, $itemNames);
+	public static function foundationByAlias($alias);
 	// Images
 	public static function saveImage($fnd, $name, $img, $item, $folder, $size=[]);
 	public static function deleteImage($fnd, $name, $item_id, $folder, $deleteFolder=False);
@@ -16,7 +17,6 @@ Interface HelpersContracts {
 	public static function ajaxUserFoundationValidation($fnd, $usr);
 
 	// Commands
-	public static function foundationByAlias($alias);
-	public static function validationCommandParametrs(array $keyValueParams);
+	// public static function validationCommandParametrs(array $keyValueParams);
 
 }

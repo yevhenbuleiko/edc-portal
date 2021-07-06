@@ -13,6 +13,7 @@ use App\Models\User;
 
 use Config;
 use Helpers;
+use Commandhelpers;
 
 class MakeDecors extends Command
 {
@@ -62,7 +63,7 @@ class MakeDecors extends Command
                 $moderator_passwd = $this->secret('What is moderator password?');
             }
 
-            $wrongParams = Helpers::validationCommandParametrs(
+            $wrongParams = Commandhelpers::validationCommandParametrs(
                 ['alias'=>$alias, 'email'=>$moderator_email, 'passwd'=>$moderator_passwd]
             );
             if(!empty($wrongParams)) {
